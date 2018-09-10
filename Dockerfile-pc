@@ -1,10 +1,10 @@
 # Build stage
-FROM resin/beaglebone-black-golang AS build-env
+FROM golang AS build-env
 ADD . /src
 RUN cd /src && go get -u github.com/eclipse/paho.mqtt.golang && go get -u github.com/streadway/amqp && go get -u github.com/satori/go.uuid && CGO_ENABLED=0 GOOS=linux go build -o amqpcons .
 
 # Final stage
-FROM hypriot/rpi-alpine-scratch
+FROM alpine
 WORKDIR /app
 RUN mkdir /app/certs
 COPY certs/ /app/certs
