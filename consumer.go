@@ -121,7 +121,7 @@ func newConsumer(exchange, exchangeType, key, queueName string, declareQueue boo
 
 	go handleDeliveries(ctag.String(), deliveries, consumer.ErrorCh, mqttClient)
 
-	publishMqtt(*subQueueTopic+"/ctags", "{'"+ctag.String()+"'}", mqttClient)
+	publishMqtt(*subQueueTopic+"/ctags", "{\"NewCtag\":\""+ctag.String()+"\"}", mqttClient)
 
 	return nil
 
