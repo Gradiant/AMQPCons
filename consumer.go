@@ -138,7 +138,7 @@ func handleDeliveries(ctag string, deliveries <-chan amqp.Delivery, done chan er
 			d.DeliveryTag,
 			d.Body,
 		)
-		publishMqtt(*pubDataTopic, "{'ctag':'"+ctag+"','payload':'"+string(d.Body)+"'}", mqttClient)
+		publishMqtt(*pubDataTopic, "{\"ctag\":\""+ctag+"\",\"payload\":\""+string(d.Body)+"\"}", mqttClient)
 		d.Ack(false)
 	}
 	log.Printf("handle: deliveries channel closed")
