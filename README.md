@@ -21,6 +21,8 @@ Module that consumes AMQP messages by connecting to queues
 
 ### Installation
 
+- mkdir certs
+- Copy your certificates to the certs folder
 - sudo docker build -t amqpcons .
 - sudo docker run --name amqpcons -d amqpcons -uri user:pwd@amqp:5672/vhost -mqttBroker=mqtt:1883 -queueTopic=consumer/queue -connTopic=consumer/conn -dataTopic=consumer/data -cacert=./cacert.pem -clcert=./cert.pem -clkey=./key.pem
 
